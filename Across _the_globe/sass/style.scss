@@ -1,0 +1,694 @@
+@import 'resources';
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a, input, select, button{
+    text-decoration: none;
+    outline: none;
+    border: none;
+
+    &:focus{
+        box-shadow: none;
+    }
+}
+
+body{
+    font-family: $font1;
+    overflow-x: hidden;
+    user-select: none;
+}
+
+header{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 72px;
+    font-size: 1em;
+    color: #2E2E2E;
+    // background-color: aqua;
+
+    div{
+        height: 100%;
+    }
+    .searchBar{
+        width: 55%;
+        height: 40px;
+        padding: 10px 15px;
+        border-radius: 2em;
+        color: #5C5C5C;
+        background-color: #f2f2f2;
+
+        i{
+            padding-left: 15px;
+        }
+
+        input{
+            background: transparent;
+            height: 100%;
+            width: 90%;
+            margin-left: 20px;
+        }
+    }
+    #login-link{
+        display: none;
+        padding-top: 10px;
+        font-weight: 700;
+        a{
+            color: blue;
+            i{
+                color: #2e2e2e;
+                width: 10px;
+                height: 5px;
+            }
+        }
+    }
+    #logged-in{
+        cursor: pointer;
+    }
+
+    .mobHeader{
+
+        i{
+            width: 10px;
+            height: 10px;
+            color: #868E96;
+        }
+    }
+
+    @media screen and (max-width: $mobL) {
+        height: 25px;
+    }
+
+    @media screen and (min-width: $tab) and (max-width: $lap){
+
+        .atglogo{
+
+            img{
+                width: 100px;
+            }
+        }
+        .searchBar{
+            width: 70%;
+            height: 35px;
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        #login-link{
+            font-size: 0.8em;
+        }
+    }
+}
+
+#Modal-close{
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.7em;
+    padding: 0px;
+    margin: 0;
+    color: #FFFFFF;
+    margin-left: auto;
+    border-radius: 100%;
+    position: absolute;
+    right: -10px;
+    top: -50px;
+    z-index: 20;
+
+    @media screen and (max-width:$tab) {
+        right: 10px;
+        top: 35px;
+        color: #212529;
+        font-size: 1.4em;
+    }
+}
+
+#signup-Modal, #signin-Modal{
+
+    .modal-dialog{
+        z-index: 15;
+        top: 50%;
+        transform: translateY(-50%);
+
+        .modal-content{
+            background: #FFFFFF;
+            box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+            width: 780px;
+            left: 50%;
+            transform: translate(-50%, 0); 
+
+            .modal-header{
+                background: #EFFFF4;
+                border-radius: 8px 8px 0px 0px;
+                height: 50px;
+                text-align: center;
+
+                .modal-title{
+                    margin: auto;
+                    font-size: 0.9em;
+                    font-weight: 500;
+                }
+            }
+
+            .modal-body{
+
+                .container{
+                    .row{
+                       .create-acnt, .login-acnt{
+                           font-size: 1.9em;
+                           font-weight: 700;
+                        }
+
+                        .signup-form, .signin-form{
+                            input{
+                                border: 1px solid #D9D9DB;
+                                border-radius: 2px 2px 0px 0px;
+                                padding: 10px;
+                                &:focus{
+                                    box-shadow: none;
+                                }
+                            }
+                        }
+                        .crt-btn, .signin-btn{
+                            background: #2F6CE5;
+                            border-radius: 20px;
+                            font-size: 20px;
+                            color: white;
+                            font-weight: 400;
+                            height: 40px;
+                            text-align: center;
+                            cursor: pointer;
+                            p{
+                                padding: 5px;
+                                margin: auto;
+                            }
+                        }
+                        .su-facebook, .si-facebook{
+                            cursor: pointer;
+                            font-size: 16px;
+                            font-weight: 500;
+                            border: 0.6px solid #D9D9DB;
+                            border-radius: 2px;
+                            p{
+                                i{color: blue;}
+                                margin: auto;
+                                padding: 8px;
+                            }
+                        }
+                        .su-google, .si-google{
+                            @extend .su-facebook;
+                        }
+
+                        .frgt-pass{
+                            cursor: pointer;
+                            font-size: 13px;
+                            font-weight: 500;
+                            text-align: center;
+
+                            &:hover{
+                                text-decoration: underline;
+                            }
+                        }
+
+                       .rightside-Modal{
+                           font-size: 0.9em;
+                           font-weight: 300;
+                           text-align: end;
+                           align-self: center;
+
+                           a{font-weight: bold;}
+
+                           .signup-bottomLine{
+                               font-size: 0.8em;
+                               text-align: center;
+                               font-weight: 400;
+                           }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $tab) {
+
+    #signin-Modal{
+        .modal-dialog{
+            top: 30%;
+        }
+    }
+    #signup-Modal{
+        .modal-dialog{
+            top: 10%;
+        }
+    }
+    #signup-Modal, #signin-Modal{
+        .modal-dialog{
+            transform: translate(0);
+    
+            .modal-content{
+                width: 100vw;
+    
+                .modal-body{
+    
+                    .signup-form, .signin-form{
+                        font-size: 12px;
+                    }
+                    
+                    .blw-form{
+                        p{
+                            font-size: 14px;
+                            align-self: center;
+                        }
+                        .crt-btn, .signin-btn{
+                            height: 30px;
+                            p{
+                                padding: 0;
+                                margin: auto;
+                            }
+                        }
+                        
+                    }
+    
+                    .rightside-Modal{
+    
+                        margin-top: 20px;
+                        p{
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ---- Landing 
+main{
+    width: 100%;
+    height: 30vw;
+    position: relative;
+
+    @media screen and (max-width: $tab){
+        width: 100vw;
+        height: 60vw;
+
+        .landing-cover{
+            background-size: cover;
+        }
+    }
+    .landing-overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.6) 100%);
+    }
+    .landing-cover{
+        background: url(../Assets/images/landingImg.png) no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .sm-cover-elmnts{
+        position: absolute;
+        top: 10px;
+        height: 40px;
+
+        .arrow-left{
+            i{
+                color: white;
+                font-size: 1.3em;
+            }
+        }
+
+        .join-sm{
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-size: 0.8em;
+            font-weight: 500;
+            border: 0.8px solid #FFFFFF;
+            border-radius: 4px;
+            // width: 80px;
+            height: 30px;
+
+            #leave-mob{
+                display: none;
+            }
+        }
+    }
+    .landing-text{
+        position: absolute;
+        bottom: 80px;
+        left: 200px;
+        color: white;
+
+        .landText_head{
+            font-size: 3em;
+            line-height: 1.5em;
+            font-weight: 700;
+        }
+        .landText_subs{
+            font-size: 1.2em;
+            line-height: 1em;
+        }
+
+        @media screen and (max-width: $mobL){
+            bottom: 20px;
+            left: 20px;
+            
+            .landText_head{
+                font-size: 1.1em;
+                line-height: 1em;
+            }
+            .landText_subs{
+                font-size: 0.7em;
+                line-height: 0.2em;
+            }
+        }
+
+        @media screen and (min-width: $mobL) and (max-width: $lap){
+            
+            bottom: 50px;
+            left: 50px;
+
+            .landText_head{
+                font-size: 2em;
+                line-height: 1.3em;
+            }
+            .landText_subs{
+                font-size: 0.9em;
+                line-height: 0.5em;
+            }
+        }
+    }
+}
+
+.action-btn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    background: linear-gradient(180deg, #FF5C5C 0%, #F0568A 100%);
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.35), 0px 0px 3px rgba(0, 0, 0, 0.08);
+    padding-bottom: 5px;
+    z-index: 10;
+
+    i{
+        font-size: 1.1em;
+        color: white;
+    }
+}
+
+// Tabs Over Section (NAV)
+#head-nav{
+    
+    #head-nav-desktop{
+        border-bottom: 1px solid #E0E0E0;
+        padding: 0;
+
+        .navActive{
+            a{
+                color: black;
+                font-weight: 600;
+                border-bottom: 2px solid black;
+            }
+        }
+        ul{
+            height: 100%;
+            
+            li{
+                border-bottom: 2px solid #e0e0e023;
+                a{color: #8A8A8A;}
+            }
+        }
+        .sectionOptions{
+            height: 40px;
+            margin-top: 40px;
+    
+            .writePost{
+                cursor: pointer;
+                width: 150px;
+                background: #EDEEF0;
+                border-radius: 4px;
+                margin-right: 20px;
+            }
+            .join-group{
+                cursor: pointer;
+                width: 150px;
+                background: #2F6CE5;
+                border-radius: 4px;
+                color: white;
+                
+                h6{
+                    text-align: center;
+                    width: 100%;
+                    padding: 10px;
+                }
+            }
+            #leaveGroup{
+                display: none;
+            }
+            .leave-group{
+                @extend .join-group;
+                background: white;
+                color: #6A6A6B;
+                border: 0.8px solid #989899;
+            }
+        }
+
+        @media screen and (min-width: $tab) and (max-width: $lap){
+             
+            ul{
+                font-size: 0.8em;
+            }
+
+            .sectionOptions{
+                .writePost{
+                    width: 110px;
+                    h6{
+                        font-size: 0.8em;
+                    }
+                }
+                .join-group{
+                    width: 110px;
+                    h6{
+                        font-size: 0.8em;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+section{
+    overflow-x: hidden;
+
+    // left side section
+    .content-container{
+
+        .article-container{
+
+            .card{
+                margin-bottom: 20px;
+                .card-body{
+                    padding: 25px;
+    
+                    .bi-three-dots{
+                        cursor: pointer;
+                    }
+    
+                    .card-title{
+                        cursor: pointer;
+                    }
+    
+                    div{
+                        h5{font-weight: 600;}
+                        i{font-size: 1.5em;}
+                    }
+                    .card-end{
+                        font-weight: 600;
+                        img{
+                            width: 50px;
+                            height: 50px;
+                            margin-right: 10px;
+                        }
+                        p{
+                            font-weight: 500;
+                            font-size: 0.9em;
+                        }
+                        .bi-share-fill{
+                            font-size: 1.2em;
+                            padding: 10px;
+                            width: 45px;
+                            height: 40px;
+                            text-align: center;
+                            background: #EDEEF0;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
+                    }
+                    .card-text-meetup{
+                        h6{
+                            font-size: 0.9em;
+                        }
+                    }
+    
+                    .visit-link{
+                        border: 0.7px solid #A9AEB8;
+                        border-radius: 8px;
+                        text-align: center;
+                        cursor: pointer;
+                        
+                        h6{
+                            font-weight: 600;
+                            font-size: 1em;
+                        }
+                    }
+
+                    .dropdown{
+                        a{
+                            border-radius: 4px;
+                            padding: 5px 10px;
+                            color: black;
+                            background: #EDEEF0;
+                            transition: 0.3s ease;
+
+                            &:active, &:hover{
+                                background: #BFC0C0;
+                            }
+                        }
+                        ul{
+                            li{
+                                a{
+                                    background: none;
+                                    padding: 5px 10px;
+                                }
+                            }
+                        }
+                    }
+    
+                    @media screen and (max-width:$tab) {
+    
+                        padding: 15px;
+                        .card-title{
+                            font-size: 1em;
+                        }
+                        .card-text{
+                            font-size: 0.8em;
+                        }
+                        .card-end{
+                            font-size: 0.7em;
+                            margin-top: 25px;
+    
+                            img{
+                                width: 35px;
+                                height: 35px;
+                            }
+                            
+                            .bi-share-fill{
+                                font-size: 1em;
+                                width: 70px;
+                                height: 36px;
+                                padding: 0;
+                                
+                                span{
+                                    font-size: 1em;
+                                    font-style: normal;
+                                }
+                            }
+                        }
+                        .card-text-meetup{
+                            h6{
+                                font-size: 0.7em;
+                            }
+                        }
+                        .visit-link{
+                            h6{
+                                font-size: 0.8em;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .rightSide-cnt-container{
+
+        .location{
+            border-bottom: 0.4px solid #B8B8B8;
+            width: 70%;
+
+            input{
+                width: 80%;
+                background: transparent;
+            }
+        }
+        .below-location{
+            font-size: 0.8em;
+            padding: 5px 20px;
+            text-align: center;
+        }
+
+        .recmd-groups{
+            display: none;
+            text-align: center;
+            padding-top: 20px;
+
+            p{
+                font-size: 15px;
+                padding: 0;
+            }
+            .flw-btn{
+                cursor: pointer;
+                // width: 60px;
+                height: 25px;
+                padding: 10px;
+                font-size: 12px;
+                background: #EDEEF0;
+                border-radius: 14px;
+                transition: 0.3s ease;
+
+                &:hover{
+                    background: black;
+                    color: white;
+                }
+            }
+            .flw-btn-active{
+                background: black;
+                color: white;
+            }
+        }
+
+        @media screen and (min-width: $tab) and (max-width: $lapL){
+            .location{
+                font-size: 0.75em;
+                width: 100%;
+            }
+            .below-location{
+                font-size: 0.7em;
+                padding: 5px;
+            }
+        }
+    }
+}
